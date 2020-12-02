@@ -3,7 +3,7 @@ const {nanoid} = require("nanoid");
 
 const users = [
   {
-    id: newUserId(), // hint: use the shortid npm package to generate it
+    id: "1", // hint: use the shortid npm package to generate it
     name: "Jane Doe", // String, required
     bio: "Not Tarzan's Wife, another Jane", // String, required
   },

@@ -14,6 +14,13 @@ server.get("/users", (req, res) => {
   res.json(users);
 })
 
+server.get("/users/:id", (req, res) => {
+  const id = req.params.id
+  const user = db.getUserById(id);
+
+  user ? res.json(user) : res.status(404).json({message: `User Not Found: ${user}`});
+})
+
 server.listen(8080, () => {
   console.log("server started at http://localhost:8080");
 })
