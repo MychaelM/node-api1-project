@@ -33,7 +33,7 @@ function getUserById(id) {
 
 function createUser(data) {
   const payload = {
-    id: String(users.length + 1),
+    id: newUserId(),
     ...data,
   };
 
