@@ -1,7 +1,7 @@
 const {nanoid} = require("nanoid");
 // let id = nanoid();
 
-const users = [
+let users = [
   {
     id: "1", // hint: use the shortid npm package to generate it
     name: "Jane Doe", // String, required
