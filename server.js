@@ -72,6 +72,31 @@ server.delete("/users/:id", (req, res) => {
   }
 })
 
+server.put("/users/:id", (req, res) => {
+  const user = db.getUserById(req.params.id)
+
+  if (!req.body.name || !req.body.bio) {
+    return res.status(400).json({
+      errorMessage: "Please provide name and bio for the user.",
+    });
+  } else if (!user.id) {
+      res.status(404).json({
+        message: "The user with the specified ID does not exist.",
+      });
+  } else if (req.body.name && req.body.bio) {
+    const updatedUser = db.updateUser(user.id, {
+      name: req.body.name || user.name,
+      bio: req.body.bio || user.bio,
+    });
+
+    res.status(201).json(updatedUser);
+  } else {
+    res.status(500).json({
+      errorMessage: "The users information could not be retrieved.",
+    });
+  }
+});
+
 server.listen(8080, () => {
   console.log("server started at http://localhost:8080");
 })
